@@ -2,8 +2,12 @@ pipeline {
     agent any
 
     tools {
-        maven 'Maven'  // Replace with actual tool names from Jenkins configuration
-        jdk 'JDK'
+        maven 'Maven'
+        
+    }
+
+    environment {
+        PATH = "${tool 'Maven'}/bin:${tool 'JDK'}/bin:${env.PATH}"
     }
 
     stages {
@@ -41,3 +45,4 @@ pipeline {
         }
     }
 }
+
